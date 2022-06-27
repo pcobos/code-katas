@@ -1,6 +1,6 @@
 // A promise takes one parameter (a function) with two variables (resolve & reject)
 let myPromise = new Promise((resolve, reject) => {
-  let promiseResult = 1 + 2;
+  let promiseResult = 1 + 1;
   if (promiseResult == 2) {
     resolve("Success");
   } else {
@@ -19,4 +19,22 @@ myPromise
     console.log(message);
   });
 
-// let secondPromise = new Promise(rejecte);
+const userLeft = true;
+let secondPromise = new Promise((resolve, reject) => {
+  if (userLeft) {
+    reject({
+      name: "User Left",
+      message: "Sorry!",
+    });
+  } else {
+    resolve("Thanks for staying");
+  }
+});
+
+secondPromise
+  .then((message) => {
+    console.log(message);
+  })
+  .catch((message) => {
+    console.log(message.name + " " + message.message);
+  });
